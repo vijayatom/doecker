@@ -17,4 +17,4 @@ class Form1(forms.Form):
     inspection_body = forms.CharField(label='Inspection Body', max_length=100)
     other = forms.CharField(label='Other', max_length=100)
         
-
+#jkssbdkb
