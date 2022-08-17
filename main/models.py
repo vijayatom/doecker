@@ -2,10 +2,13 @@ from email.mime import application
 from optparse import Option
 from statistics import mode
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class User(models.Model):
     name = models.CharField(max_length=10)
+
+
     
 class GIGI1(models.Model):
     
@@ -29,3 +32,15 @@ class GIGI1(models.Model):
 
     def __str__(self):
         return self.name_of_applicant
+
+
+
+#django user login authentication
+class UserProfileInfo(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    #additional attributes
+    portfolio_site = models.URLField(blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
+
+    def __str__(self):
+        return self.user.username
