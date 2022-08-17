@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GI - INDIA</title>
+    <script
+      src="https://kit.fontawesome.com/ad34c27ecf.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+  </head>
+  <body class="mobile">
+    <!-- ***************** BODY CONTENT *************  -->
+    <!-- ***************** Seconary navbar ************* -->
+    {% include 'account/secondary-navbar.html' %} {% block secondary-navbar %}
+    {%endblock%}
+    <!-- ***************** Corouseal Section ************* -->
+    {% include 'account/corouseal-main.html' %} {% block corouseal-main %}
+    {%endblock%}
+    <!-- ***************** Counter Section ************* -->
+    <div class="counter-content">
+      <div>
+        <h1 class="counter-value applied" akhi="940">0</h1>
+        <p>Totally Applied</p>
+      </div>
+      <div>
+        <h1 class="counter-value approved" akhi="420">0</h1>
+        <p>Got Approved</p>
+      </div>
+      <div>
+        <h1 class="counter-value process" akhi="412">0</h1>
+        <p>In Process</p>
+      </div>
+    </div>
+
+    <!-- =***************** SCRIPT TAGES ************* -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static '/js/app.js' %}"></script>
+  </body>
+</html>

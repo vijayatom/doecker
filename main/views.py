@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import GIGI1, User
+from .models import *
 from .forms import Form1
+import re
+
 # Create your views here.
 
 def index(request):
@@ -57,3 +59,19 @@ def create_form1(request, form_type):
             #form.save()
         return HttpResponse("<h1>Form Submitted Successfully</h1>")
     return render(request,"form1.html", context={'form':Form1(request.GET)})
+
+def home(request):
+    return render(request, 'main.html')
+
+def about(request):
+    return render(request, 'about.html')
+	
+def registration(request):
+	return render(request, 'registration.html')
+
+def renewal(request):
+    return render(request, 'renewal.html')
+	
+def contact(request):
+	return render(request, 'contact.html')
+
