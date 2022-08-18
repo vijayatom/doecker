@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
-from .forms import Form1
+from .forms import Form1,userlogin
 import re
-
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 # Create your views here.
 
 def index(request):
@@ -66,8 +67,12 @@ def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = User.objects.filter(username=username, password=password)
+        form1 = userlogin(request.POST)
+        data = form1.cleaned_data
+        user = authenticate(username=data['username'], password=data['password'])
+    
         if user:
             return HttpResponse("<h1>Login Successful</h1>")
         else:
             return HttpResponse("<h1>Login Failed</h1>")
+    return render(request,"login.html", context={'form':userlogin(request.GET)})
