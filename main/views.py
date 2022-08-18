@@ -56,6 +56,12 @@ def renewal(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+def faq(request):
+	return render(request, 'faq.html')    
+
+# def form1(request):
+# 	return render(request, 'form1.html')    
+
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')

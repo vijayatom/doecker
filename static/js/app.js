@@ -1,6 +1,6 @@
 // COUNTER SECTION ######
 const counters = document.querySelectorAll(".counter-value");
-const speed = 1000;
+const speed = 100;
 
 counters.forEach((counter) => {
   const animate = () => {

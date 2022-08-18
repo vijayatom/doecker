@@ -9,4 +9,6 @@ urlpatterns = [
     path('renewal', views.renewal),
     path('contact', views.contact),
     path("form1/<form_type>", views.create_form1, name="form1"),
+    path('faq', views.faq),
+
 ]

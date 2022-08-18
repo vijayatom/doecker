@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter:wght@300;400;500&family=Poppins:wght@200;400;500;600&display=swap");
 /* NAVBAR */
 * {
   padding: 0;
@@ -17,13 +17,13 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: var(--dark);
+  background: #fff;
   color: var(--pure);
 }
 
 .container {
   width: 1152px;
-  max-width: 90%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -228,7 +228,7 @@ nav ul.dropdown-list {
 
 /* #########  COROUSEL  ######### */
 .carousel {
-  min-height: 90.2vh;
+  min-height: 63vh;
   display: grid;
   grid-template-rows: 1fr 3fr 1.5fr;
   grid-template-columns: 50px 1fr 1fr 1fr 1fr 50px;
@@ -466,6 +466,7 @@ nav ul.dropdown-list {
 /* ####### COUNTER STYLES ######### */
 
 .counter-content {
+  margin-top: -2.5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -474,7 +475,8 @@ nav ul.dropdown-list {
 }
 
 .counter-value {
-  font-size: 150px;
+  font-family: "Bitter", serif;
+  font-size: 5rem;
   display: block;
   font-weight: bold;
 }
@@ -489,6 +491,125 @@ nav ul.dropdown-list {
   color: #138808;
 }
 
-.form-control{
-  background-color: #138808;  
+.counter-content p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #80837e;
+}
+
+/* #### FOOTER SECTION  ##### */
+.footer {
+  width: 90%;
+  padding: 1rem 0;
+  margin: 0 auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.primary-footer .copyright-text {
+  font-size: 0.8em;
+  color: #80837e;
+  margin-left: 50%;
+  padding: 1rem 0;
+  transform: translateX(-20%);
+}
+
+.footer .left-footer ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer .left-footer ul li {
+  list-style: none;
+}
+
+.footer .left-footer ul li a {
+  text-decoration: none;
+  color: #434343;
+}
+.footer .left-footer ul li:hover a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer .right-footer {
+  gap: 1rem;
+}
+
+hr {
+  background-color: #324234;
+}
+
+/*  #### NEWS FEED SECTION  #### */
+.feed-section {
+  height: 80vh;
+  box-shadow: 60px -16px #138808;
+  background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.623)),
+    url("https://cdn.shopify.com/s/files/1/0557/4331/6157/articles/TF_What_Is_Darjeeling_HERO_V3_2880x1512_d72eecbe-c914-4fe3-8325-11366b7ee396_2880x.jpg?v=1630469144");
+  padding: 3rem;
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  border-radius: 2rem;
+  margin: 0 auto;
+  align-items: center;
+}
+.feed-section .register-section {
+  display: flex;
+  flex-direction: column;
+  /* align-items: space-around; */
+  justify-content: space-between;
+}
+
+.feed-section .register-section .register-text {
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.feed-section .register-section button {
+  padding: 0.8rem 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  outline: none;
+  background-color: #138808;
+}
+
+.feed-section .register-section button a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.feed-section .newsfeed .news-wrapper {
+  border: none;
+  border-radius: 0.6rem;
+  color: #fff;
+  padding: 3rem;
+}
+
+.feed-section .newsfeed .news-wrapper ul li {
+  background-color: rgba(14, 13, 14, 0.6);
+  color: rgb(225, 225, 225);
+  padding: 1rem 0.8rem;
+  list-style: none;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.feed-section .newsfeed .news-wrapper ul li p {
+  margin-bottom: 1rem;
+}
+
+.feed-section .newsfeed .news-wrapper h2 {
+  margin-bottom: 1rem;
+}
+
+.feed-section .newsfeed .news-wrapper ul li a {
+  text-decoration: none;
+  border: none;
+  border-radius: 0.3rem;
+  color: #fff;
+  background-color: #138808;
+  padding: 0.3rem 0.6rem;
 }
