@@ -545,9 +545,8 @@ hr {
 /*  #### NEWS FEED SECTION  #### */
 .feed-section {
   height: 80vh;
-  box-shadow: 60px -16px #138808;
-  background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.623)),
-    url("https://cdn.shopify.com/s/files/1/0557/4331/6157/articles/TF_What_Is_Darjeeling_HERO_V3_2880x1512_d72eecbe-c914-4fe3-8325-11366b7ee396_2880x.jpg?v=1630469144");
+  box-shadow: 0 8px 6px -6px rgb(161, 161, 161);
+  background-color: #f7f7f7;
   padding: 3rem;
   display: flex;
   justify-content: space-evenly;
@@ -565,7 +564,7 @@ hr {
 
 .feed-section .register-section .register-text {
   margin-bottom: 2rem;
-  color: #fff;
+  color: #666;
 }
 
 .feed-section .register-section button {
@@ -577,19 +576,19 @@ hr {
 }
 
 .feed-section .register-section button a {
-  color: #fff;
+  color: rgb(254, 254, 254);
   text-decoration: none;
 }
 
 .feed-section .newsfeed .news-wrapper {
   border: none;
   border-radius: 0.6rem;
-  color: #fff;
+  color: #666;
   padding: 3rem;
 }
 
 .feed-section .newsfeed .news-wrapper ul li {
-  background-color: rgba(14, 13, 14, 0.6);
+  background-color: rgba(0, 0, 0, 0.852);
   color: rgb(225, 225, 225);
   padding: 1rem 0.8rem;
   list-style: none;
@@ -614,5 +613,146 @@ hr {
   padding: 0.3rem 0.6rem;
 }
 
+/* ###### ABOUT PAGE ########### */
+.abt-main-content {
+  color: #5d5d5d;
+}
 
+.abt-main-content .about-img {
+  width: 100%;
+  height: 40vh;
+  background-image: url("https://cdn.shopify.com/s/files/1/0155/8131/products/0X2A0055_b6675848-0fe1-4869-b282-b313045b34af_2000x.jpg?v=1647937248");
+  background-size: cover;
+}
 
+.abt-main-content .about-content .about-title {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.abt-main-content .about-content .center-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.abt-main-content .about-content .center-content .about-title-2 {
+  font-size: 1.7rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ###### FAQ PAGE ########### */
+
+.faq-container {
+  font-family: "Poppins", sans-serif;
+  margin: 0 auto;
+  padding: 4rem;
+  width: 48rem;
+}
+
+.accordion .accordion-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+.accordion .accordion-item button[aria-expanded="true"] {
+  border-bottom: 1px solid #03b5d2;
+}
+.accordion button {
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 1em 0;
+  color: #7288a2;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  background: none;
+  outline: none;
+}
+.accordion button:hover,
+.accordion button:focus {
+  cursor: pointer;
+  color: #03b5d2;
+}
+.accordion button:hover::after,
+.accordion button:focus::after {
+  cursor: pointer;
+  color: #03b5d2;
+  border: 1px solid #03b5d2;
+}
+.accordion button .accordion-title {
+  padding: 1em 1.5em 1em 0;
+}
+.accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 22px;
+}
+.accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+.accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+.accordion button[aria-expanded="true"] {
+  color: #03b5d2;
+}
+.accordion button[aria-expanded="true"] .icon::after {
+  width: 0;
+}
+.accordion button[aria-expanded="true"] + .accordion-content {
+  opacity: 1;
+  max-height: 15em;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+}
+.accordion .accordion-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+}
+.accordion .accordion-content p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 2em 0;
+}
+
+/* ### NAV CONTACT BTN ### */
+.nav-wrapper .nav-list li .btn a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* LANGUAGE TOGGLE BTN */
+.nav-wrapper .nav-list #google_translate_element {
+  margin-left: 1rem;
+  margin-top: -1.1rem;
+  height: 20px;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  background-color: #fff;
+  outline: none;
+}

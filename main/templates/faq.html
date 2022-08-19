@@ -5,12 +5,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/faq.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+    <script
+    src="https://kit.fontawesome.com/ad34c27ecf.js"
+    crossorigin="anonymous"
+  ></script>
     <title>GI - FAQ</title>
   </head>
   <body>
-    
-    <div class="container">
+    <!-- ***************** Seconary navbar ************* -->
+    {% include 'secondary-navbar.html' %} {% block secondary-navbar %}
+    {%endblock%}
+
+    <!-- ***************** FAQ SECTION  ************* -->
+    <div class="faq-container">
       <h2>Frequently Asked Questions</h2>
       <div class="accordion">
         <div class="accordion-item">
@@ -234,8 +242,39 @@ He should apply in writing in the prescribed form alongwith prescribed fee
         </div>
       </div>
     </div>
+     <!-- ##### FOOTER SECTION ##### -->
+     <div class="primary-footer">
+      <p class="copyright-text">©All copyrghts are reserved to Indian Government.</p>
+    </div>
+    <hr>
+    <div class="footer">
+      <div class="left-footer">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Register for GI</a></li>
+          <li><a href="#">Renewal of GI</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="right-footer">
+       <img style="width:200px;height:auto;" src="{% static 'assests/india emb.png'%}"></img>
+      <img style="width:30px;height:auto;margin-left:1.5rem;" src="{% static 'assests/gi tag.png'%}"></img>
+      </div>
+    </div>
 
     <!-- ####### SCRIPT  ####### -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
     <script src="{% static '/js/faq.js' %}"></script>
+    <script src="{% static '/js/app.js' %}"></script>
   </body>
 </html>

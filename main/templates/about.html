@@ -5,57 +5,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/about.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+    <script
+      src="https://kit.fontawesome.com/ad34c27ecf.js"
+      crossorigin="anonymous"
+    ></script>
     <title>GI - About</title>
   </head>
   <body>
-    <div class="main-content">
-      <div class="about-img"></div>
-      <div class="about-content">
-        <h2 class="about-title">ABOUT US:</h2>
-        <h3 class="about-title">VISION AND MISSION</h3>
-        <p class="about-text">
-          Intellectual Property Rights is an inevitable tool for today's
-          globalized economy. Fostering innovation is one of the sustainable
-          development goals set by the Government of India. “An India where
-          Intellectual Property stimulates creativity and innovation for the
-          benefit of all” is the vision of our National IPR Policy. Several
-          initiatives have already proven to foster innovation like the Make in
-          India, Start up India, Digital India and Skill India. The Atal
-          Innovation Mission nurtures the innovative energies across the country
-          in schools and universities. Under the IPR policy, the cell for IPR
-          Promotion and Management, CIPAM has been tasked to facilitate creation
-          and commercialization of IP assets in collaboration with the Office of
-          the Controller General of Patents, Designs and Trademarks.
-          <br />
-          <br />
-          The filings for IP rights have considerably increased and the
-          Intellectual Property Offices are also getting revamped in terms of
-          capacity building. More Examiners have been recruited and trained in
-          Patents. The Patent Office started functioning as International
-          Searching and Examining Authority since October 2013. It is
-          encouraging to note that more applicants are now choosing IPO for
-          international search. Applicants registered as Start-ups and those who
-          have chosen Indian Patent Office as ISA or IPEA in the corresponding
-          international application can avail of the facility of Expedited
-          Examination. To ensure quality in all our operations, a dedicated
-          Quality Assurance Division has been set up in the Patent Office.
-          <br />
-          <br />
-          Manpower augmentationand business process reengineering have proved to
-          substantially increase the output of the Trademarks Registry.
-          Electronic communication has been initiated for Designs for quicker
-          processing. Many of the globally famous products that are part of
-          India's rich cultural heritage have been registered as Geographical
-          Indications. The Copyrights Office is also brought under the Office of
-          CGPDTM. With all efforts in place, it is expected that IPO would leap
-          to even greater heights.
-          <br />
-          <br />
-        </p>
-      </div>
-    </div>
+    <!-- ***************** BODY CONTENT *************  -->
+    <!-- ***************** Seconary navbar ************* -->
+    {% include 'secondary-navbar.html' %} {% block secondary-navbar%}
+    {%endblock%}
+
+    <!-- ***************** ABOUT PAGE  ************* -->
+    {% include 'about-content.html' %} {% block about-content%}
+    {%endblock%}
+
     <!-- ####### SCRIPT  ####### -->
-    <script src="{% static '/js/faq.js' %}"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      }
+    </script>
+    <script src="{% static '/js/app.js' %}"></script>
   </body>
 </html>
