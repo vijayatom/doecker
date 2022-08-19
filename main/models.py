@@ -8,9 +8,9 @@ from django.contrib.auth.models import User
 class User(models.Model):
     name = models.CharField(max_length=10)
 
-
+# Association table for User
     
-class GIGI1(models.Model):
+class GI_Association_regestration(models.Model):
     
     Appli_num = models.AutoField(primary_key=True)
     name_of_applicant = models.CharField(max_length=100)
@@ -33,6 +33,30 @@ class GIGI1(models.Model):
     def __str__(self):
         return self.name_of_applicant
 
+class GI_Assoctiation_renewal(models.Model):
+    renewal_num = models.AutoField(primary_key=True)
+    name_of_applicant = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name_of_applicant
+
+#public tables for user 
+
+#user table
+class GI_User_reges(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    user_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user_name
+
+class GI_User_renual(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    user_name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user_name
+        
 
 
 #django user login authentication

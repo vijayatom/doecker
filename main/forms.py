@@ -1,6 +1,6 @@
 from django import forms
 
-class Form1(forms.Form):
+class GI_Associatation_RegistionForm(forms.Form):
     #appli_num = forms.CharField(label='Application Number', max_length=100)
     name_of_applicant = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of the applicant', 'style': 'width: 300px;', 'class': 'form-control'}))
     address = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'address', 'style': 'width: 300px;', 'class': 'form-control'}))
@@ -16,17 +16,23 @@ class Form1(forms.Form):
     inspection_body = forms.CharField(label='Inspection Body', max_length=100)
     other = forms.CharField(label='Other', max_length=100)
 
-class userreg(forms.Form):
-    username = forms.CharField(label='Username', max_length=100)
-    password = forms.CharField(label='Password', max_length=100)
-    email = forms.CharField(label='Email', max_length=100)
-    phone = forms.CharField(label='Phone', max_length=100)
-    address = forms.CharField(label='Address', max_length=100)
-    city = forms.CharField(label='City', max_length=100)
-    state = forms.CharField(label='State', max_length=100)
-    zipcode = forms.CharField(label='Zipcode', max_length=100)
-    country = forms.CharField(label='Country', max_length=100)
-    dob = forms.CharField(label='DOB', max_length=100)
+class GI_Associatation_RenewalForm(forms.Form):
+    name_of_applicant = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of the applicant', 'style': 'width: 300px;', 'class': 'form-control'}))
+
+    def __str__(self):
+        return self.name_of_applicant
+
+class GI_User_RegistrationForm(forms.Form):
+    user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Name', 'style': 'width: 300px;', 'class': 'form-control'}))
+
+    def __str__(self):
+        return self.user_name
+
+class GI_User_RenewalForm(forms.Form):
+    user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Name', 'style': 'width: 300px;', 'class': 'form-control'}))
+
+    def __str__(self):
+        return self.user_name
 
 class userlogin(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
