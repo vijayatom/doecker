@@ -19,20 +19,17 @@ class GI_Associatation_RegistionForm(forms.Form):
 class GI_Associatation_RenewalForm(forms.Form):
     name_of_applicant = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of the applicant', 'style': 'width: 300px;', 'class': 'form-control'}))
 
-    def __str__(self):
-        return self.name_of_applicant
+
 
 class GI_User_RegistrationForm(forms.Form):
     user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Name', 'style': 'width: 300px;', 'class': 'form-control'}))
 
-    def __str__(self):
-        return self.user_name
+
 
 class GI_User_RenewalForm(forms.Form):
     user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Name', 'style': 'width: 300px;', 'class': 'form-control'}))
 
-    def __str__(self):
-        return self.user_name
+
 
 class userlogin(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
