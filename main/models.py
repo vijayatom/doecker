@@ -33,12 +33,12 @@ class GI_Association_regestration(models.Model):
     def __str__(self):
         return self.name_of_applicant
 
-class GI_Assoctiation_renewal(models.Model):
+'''class GI_Assoctiation_renewal(models.Model):
     renewal_num = models.AutoField(primary_key=True)
     name_of_applicant = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name_of_applicant
+        return self.name_of_applicant '''
 
 #public tables for user 
 
@@ -46,13 +46,20 @@ class GI_Assoctiation_renewal(models.Model):
 class GI_User_reges(models.Model):
     user_id = models.AutoField(primary_key=True)
     user_name = models.CharField(max_length=100)
+    address_of_user = models.CharField(max_length=100)
+    email_id = models.CharField(max_length=100)
+    ph_num = models.CharField(max_length=100)
+    Association_number = models.ForeignKey(GI_Association_regestration, on_delete=models.CASCADE)
+    gi_number = models.CharField(max_length=100)
 
     def __str__(self):
         return self.user_name
 
 class GI_User_renual(models.Model):
-    user_id = models.AutoField(primary_key=True)
+    application_id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey(GI_User_reges, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
+    ph_num = models.CharField(max_length=100)
 
     def __str__(self):
         return self.user_name

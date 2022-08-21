@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
-from .forms import GI_Associatation_RegistionForm,GI_Associatation_RenewalForm, GI_User_RegistrationForm, GI_User_RenewalForm
+from .forms import *
 import re
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -43,7 +43,7 @@ def Gi_Associatation_registration(request, form_type):
     return render(request,"GI_Association_regestrationForm.html",{'form':GI_Associatation_RegistionForm})
 
 #Associatation Renewal
-def GI_association_renewal(request):
+'''def GI_association_renewal(request):
     if request .method == 'POST':
         form = GI_Associatation_RenewalForm(request.POST)
         if form.is_valid():
@@ -53,7 +53,7 @@ def GI_association_renewal(request):
                 )
             form.save()
         return HttpResponse("<h1>Form Submitted Successfully</h1>")
-    return render(request, 'GI_Associatation_RenewalForm.html', context={'form':GI_Associatation_RenewalForm(request.GET)})
+    return render(request, 'GI_Associatation_RenewalForm.html', context={'form':GI_Associatation_RenewalForm(request.GET)})'''
 
 # user Regesteration
 
@@ -63,7 +63,12 @@ def GI_user_registration(request):
         if form.is_valid():
             data = form.cleaned_data
             user = GI_User_reges(
-                username = data['username'],
+                user_name = data['user_name'],
+                address_of_user = data['address_of_user'],
+                email_id = data['email_id'],
+                ph_num = data['ph_num'],
+                Association_number = data['Association_number'],
+                gi_number = data['gi_number'],
             )
             return HttpResponse("<h1>User Registration Successful</h1>")
     return render(request, 'GI_User_RegistrationForm.html', context={'form':GI_User_RegistrationForm(request.GET)})
@@ -76,7 +81,9 @@ def GI_user_renewal(request):
         if form.is_valid():
             data = form.cleaned_data
             user = GI_User_renual(
-                username = data['username'],
+                user_name = data['user_name'],
+                user_id = data['user_id'],
+                ph_num = data['ph_num'],
             )
             return HttpResponse("<h1>User Renewal Successful</h1>")
     return render(request, 'GI_User_RenewalForm.html', context={'form':GI_User_RenewalForm(request.GET)})

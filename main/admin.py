@@ -5,7 +5,7 @@ from .models import *
 
 admin.site.register(User)
 admin.site.register(GI_Association_regestration)
-admin.site.register(GI_Assoctiation_renewal)
+#admin.site.register(GI_Assoctiation_renewal)
 admin.site.register(GI_User_reges)
 admin.site.register(GI_User_renual)
 
