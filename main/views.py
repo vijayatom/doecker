@@ -104,7 +104,8 @@ def contact(request):
 	return render(request, 'contact.html')
 
 def faq(request):
-	return render(request, 'faq.html')    
+	return render(request, 'faq.html')   
+
 
 # def form1(request):
 # 	return render(request, 'form1.html')    
@@ -123,3 +124,14 @@ def faq(request):
             return HttpResponse("<h1>Login Failed</h1>")
     return render(request,"login.html", context={'form':userlogin(request.GET)})
     '''
+
+def dashboard1(request):
+    # h = GI_Association_regestration.objects.prefetch_related('gi_association_application_status_set', 'gi_user_reges_set','gi_user_application_status').get(Appli_num='21')
+    # print(h.gi_association_application_status_set.all())
+    # print(h.gi_user_reges_set.all())
+    # print(h.gi_user_application_status.all())
+    h = GI_User_reges.objects.all()
+    for i in h:
+        print(i.user_name)
+    # print(h)
+    return render(request, 'dashboard1.html', context={'h':h})
