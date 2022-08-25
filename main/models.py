@@ -13,7 +13,7 @@ class User2(models.Model):
 
 # Association table for User
     
-class GI_Association_regestration(models.Model):
+class Gi_Associatation_registration(models.Model):
     
     Appli_num = models.AutoField(primary_key=True)
     name_of_applicant = models.CharField(max_length=100)
@@ -48,7 +48,7 @@ class GI_Association_regestration(models.Model):
 
 class GI_Association_application_status(models.Model):
     application_id = models.AutoField(primary_key=True)
-    assoc_id = models.ForeignKey(GI_Association_regestration, on_delete=models.CASCADE)
+    assoc_id = models.ForeignKey(Gi_Associatation_registration, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     ph_num = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
@@ -68,7 +68,7 @@ class GI_User_reges(models.Model):
     address_of_user = models.CharField(max_length=100)
     email_id = models.CharField(max_length=100)
     ph_num = models.CharField(max_length=100)
-    Association_number = models.ForeignKey(GI_Association_regestration, on_delete=models.CASCADE)
+    Association_number = models.ForeignKey(Gi_Associatation_registration, on_delete=models.CASCADE)
     gi_number = models.CharField(max_length=100)
     date_of_registration = models.DateField(auto_now_add=True)
 

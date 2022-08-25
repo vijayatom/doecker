@@ -4,7 +4,11 @@ from .models import *
 from .forms import *
 import re
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import redirect, render
+from django.contrib import messages
+
 # Create your views here.
 
 def index(request):
@@ -22,7 +26,7 @@ def Gi_Associatation_registration(request, form_type):
         if form.is_valid():
             
             data = form.cleaned_data
-            form = GI_Association_regestration(
+            form = Gi_Associatation_registration(
                 name_of_applicant = data['name_of_applicant'],
                 address = data['address'],
                 persons_products_organization_authority = data['persons_products_organization_authority'],
@@ -40,7 +44,7 @@ def Gi_Associatation_registration(request, form_type):
                 )
             form.save()
         return HttpResponse("<h1>Form Submitted Successfully</h1>")
-    return render(request,"GI_Association_regestrationForm.html",{'form':GI_Associatation_RegistionForm})
+    return render(request,"GI_Associatation_RegistrationForm.html",{'form':GI_Associatation_RegistionForm})
 
 #Associatation Renewal
 '''def GI_association_renewal(request):
@@ -94,14 +98,33 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 	
-def registration(request):
-	return render(request, 'registration.html')
 
 def renewal(request):
     return render(request, 'renewal.html')
 	
 def contact(request):
 	return render(request, 'contact.html')
+
+def loginPage(request):
+    if request.user.is_authenticated:
+        print("auth done")
+        return redirect('home')
+    else:
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password =request.POST.get('password')
+            user = authenticate(request, username=username, password=password)
+            
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.info(request, 'Username OR password is incorrect')
+        context = {}
+        return render(request, 'login.html', context)
+
+def register(request):
+	return render(request, 'register.html')
 
 def faq(request):
 	return render(request, 'faq.html')   
@@ -125,14 +148,31 @@ def faq(request):
     return render(request,"login.html", context={'form':userlogin(request.GET)})
     '''
 
-def association_dashboard(request):
-    # h = GI_Association_regestration.objects.prefetch_related('gi_association_application_status_set', 'gi_user_reges_set','gi_user_application_status').get(Appli_num='21')
+def dashboard1(request):
+    # h = Gi_Associatation_registration.objects.prefetch_related('gi_association_application_status_set', 'gi_user_reges_set','gi_user_application_status').get(Appli_num='21')
     # print(h.gi_association_application_status_set.all())
     # print(h.gi_user_reges_set.all())
     # print(h.gi_user_application_status.all())
-    h = GI_Association_regestration.objects.all()
-    
+    # f = Gi_Associatation_registration.objects.all()
+    # for i in f:
+    #     print(f.name_of_applicant)   
+    h = GI_User_reges.objects.all()
     for i in h:
         print(i.user_name)
     # print(h)
     return render(request, 'dashboard1.html', context={'h':h})
+
+def registration(request):
+    return render(request,'registration.html')
+
+def assregister(request):
+    form = UserCreationForm()
+
+    if request.method =='POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+
+    context={'form':form}
+    return render(request,'assregister.html',context)

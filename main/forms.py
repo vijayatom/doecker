@@ -1,4 +1,8 @@
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from django.contrib.auth.models import User
+
 
 class GI_Associatation_RegistionForm(forms.Form):
     #appli_num = forms.CharField(label='Application Number', max_length=100)
@@ -41,5 +45,10 @@ class GI_User_RenewalForm(forms.Form):
 class userlogin(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', max_length=100)
+
+class CreateUserForm(UserCreationForm):
+    class Meta:
+            model = User
+            fields = ['username','email','password1','password2']
 
 
