@@ -1,3 +1,4 @@
+{% load static %}  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,12 +6,252 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+
 </head>
-<body><form action="/registration" method="post">
-    {%csrf_token%}
-    {{form}}
-    <input type="submit" value="Submit">
-</form>
-    
+<body class="mobile">
+  <div class="container">
+    <!-- ***************** Seconary navbar ************* -->
+    {% include 'secondary-navbar.html' %} {% block secondary-navbar %}
+    {%endblock%}
+
+
+    <div class="container p-5">
+
+        <div class="container">
+
+            <form class="well form-horizontal" action="" method="post"  id="contact_form">
+                {% csrf_token %}
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>User Register</legend>
+        
+        <!-- Text input-->
+        
+        <!-- <div class="form-group">
+          <label class="col-md-4 control-label">ID of the User</label>  
+          <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          {{form.user_id}}
+            </div>
+          </div>
+        </div>
+         -->
+        <!-- Text input-->
+        
+        <div class="form-group">
+          <label class="col-md-4 control-label" id="username">Name of the User</label> 
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+          <div onclick="username()">
+          {{form.user_name}}
+
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" id="useraddress">Address of the User</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                <div onclick="address_of_user()">
+          {{form.address_of_user }}
+            </div>
+          </div>
+        </div>
+        
+        
+        <!-- Text input-->
+               
+        <div class="form-group">
+          <label class="col-md-4 control-label" id="usermail">Email-ID of the User</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                <div onclick="email_id()">
+
+          {{form.email_id}}
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+              
+        <div class="form-group">
+          <label class="col-md-4 control-label" id="phone">Phone Number</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                <div onclick="ph_num()">
+
+          {{form.ph_num}}
+            </div>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+         
+        <div class="form-group">
+          <label class="col-md-4 control-label" id="assnum">Association Number</label>  
+            <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                <div onclick="Association_number()">
+
+          {{form.Association_number}}
+            </div>
+          </div>
+        </div>
+        
+        <!-- Select Basic -->
+           
+        <div class="form-group"> 
+          <label class="col-md-4 control-label" id="ginum">GI-Number</label>
+            <div class="col-md-4 selectContainer">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                <div onclick="gi_number()">
+
+            {{form.gi_number}}
+
+          </div>
+        </div>
+        </div>
+         <!-- Button -->
+         <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span></button>
+            </div>
+          </div>
+      
+        </fieldset>
+        </form>
+        </div>
+            </div><!-- /.container -->
+         <!-- ##### FOOTER SECTION ##### -->
+         {% include 'footer.html' %} {% block footer %}
+         {%endblock%}
+
+      <!-- ########### JS Scripts ######## -->
+  <script>
+
+    function Association_number(){
+
+      if ('speechSynthesis' in window) {
+    // Speech Synthesis is supported 🎉
+      const id = document.getElementById('assnum').textContent
+   
+        let utterance = new SpeechSynthesisUtterance(id);
+    speechSynthesis.speak(utterance);
+    }else{
+      // Speech Synthesis is not Supported 😞 
+      alert("noo")
+    }
+    }
+    function username(){
+      if ('speechSynthesis' in window) {
+    // Speech Synthesis is supported 🎉
+      const username = document.getElementById('username').textContent
+      console.log(username)
+        let utterance = new SpeechSynthesisUtterance(username);
+    speechSynthesis.speak(utterance);
+    }else{
+      // Speech Synthesis is not Supported 😞 
+      alert("noo")
+    }
+    }
+    function address_of_user(){
+      if ('speechSynthesis' in window) {
+    // Speech Synthesis is supported 🎉
+      const phone = document.getElementById('useraddress').textContent
+      console.log(phone)
+        let utterance = new SpeechSynthesisUtterance(phone);
+    speechSynthesis.speak(utterance);
+    }else{
+      // Speech Synthesis is not Supported 😞 
+      alert("noo")
+    }
+    }
+    function email_id(){
+      if ('speechSynthesis' in window) {
+    // Speech Synthesis is supported 🎉
+      const phone = document.getElementById('usermail').textContent
+      console.log(phone)
+        let utterance = new SpeechSynthesisUtterance(phone);
+    speechSynthesis.speak(utterance);
+    }else{
+      // Speech Synthesis is not Supported 😞 
+      alert("noo")
+    }
+    } function ph_num(){
+      if ('speechSynthesis' in window) {
+    // Speech Synthesis is supported 🎉
+      const phone = document.getElementById('phone').textContent
+      console.log(phone)
+        let utterance = new SpeechSynthesisUtterance(phone);
+    speechSynthesis.speak(utterance);
+    }else{
+      // Speech Synthesis is not Supported 😞 
+      alert("noo")
+    }
+    }
+   function gi_number(){
+      if ('speechSynthesis' in window) {
+    // Speech Synthesis is supported 🎉
+      const phone = document.getElementById('ginum').textContent
+      console.log(phone)
+        let utterance = new SpeechSynthesisUtterance(phone);
+    speechSynthesis.speak(utterance);
+    }else{
+      // Speech Synthesis is not Supported 😞 
+      alert("noo")
+    }
+    }
+
+
+  </script>
+   <script
+   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+   crossorigin="anonymous"
+ ></script>
+ <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+   crossorigin="anonymous"
+ ></script>
+ <script
+   src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+   integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+   crossorigin="anonymous"
+ ></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        { pageLanguage: "en" },
+        "google_translate_element"
+      );
+    }
+
+  </script>
+  <script>
+    window.uneeqInteractionsOptions = {
+        personaShareId: "8cc6a6dd-d88c-4d9c-9439-da0b03be7617"
+    }
+</script>
+<script src="https://hosted.us.uneeq.io/interactions/v1/deploy"></script>
+  <script src="{% static '/js/app.js' %}"></script> 
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

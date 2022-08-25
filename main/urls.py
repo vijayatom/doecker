@@ -14,6 +14,6 @@ urlpatterns = [
     #path("GI_Associatation_RenewalForm/", views.GI_association_renewal, name="GI_association_renewal"),
     path("GI_User_RegistrationForm", views.GI_user_registration, name="GI_user_registration"),
     path("GI_User_RenewalForm", views.GI_user_renewal, name="GI_user_renewal"),
-    path("dashboard", views.dashboard1, name="dashboard"),
+    path("dashboard", views.association_dashboard, name="dashboard"),
 
 ]

@@ -125,12 +125,13 @@ def faq(request):
     return render(request,"login.html", context={'form':userlogin(request.GET)})
     '''
 
-def dashboard1(request):
+def association_dashboard(request):
     # h = GI_Association_regestration.objects.prefetch_related('gi_association_application_status_set', 'gi_user_reges_set','gi_user_application_status').get(Appli_num='21')
     # print(h.gi_association_application_status_set.all())
     # print(h.gi_user_reges_set.all())
     # print(h.gi_user_application_status.all())
-    h = GI_User_reges.objects.all()
+    h = GI_Association_regestration.objects.all()
+    
     for i in h:
         print(i.user_name)
     # print(h)
