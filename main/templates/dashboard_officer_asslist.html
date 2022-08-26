@@ -15,17 +15,61 @@
     {% include 'secondary-navbar.html' %} {% block secondary-navbar %}
     {%endblock%}
 
-    <a href="/allassociations"><button type="button" class="btn btn-primary btn-lg">View All Associations</button> </a>
+    <u><h1>Officer Dashboard - All Associations List</h1></u>  <br/>
+    <table class="table table-bordered " border ="1">
+        <thead>
+          <tr>
+            <th>Application Number</th>
+            <th>Applicant</th>
+            <th>Address</th>
+            <th> people of organisation</th>
+            <th> types of goods</th>
+            <th> specification</th>
+            <th> Name of geographical Indications</th>
+            <th>Desc of Goods</th>
+            <th>Geo area proof</th>
+            <th>proof of origin</th>
+            <th>method of production </th>
+            <th> Uniqueness</th>
+            <th> Inspection body</th>
+            <th> Others</th>
+            <th> Status</th>
+            <th> Is deleted</th>
+            <th> Form type</th>
+            <th> Regestration Date</th>
+            <th>Verify</th>
+            <th>Approve</th>
+          </tr>
+        </thead>
+        {%for i in associations%}
+            <tr>
+                <td>{{i.application_number}}</td>
+                <td>{{i.name_of_applicant}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.persons_products_organization_authority}}</td>
+                <td>{{i.type_of_goods}}</td>
+                <td>{{i.specification}}</td>9
+                <td>{{i.name_of_geographical_indications}}</td>
+                <td><a href="{{i.desc_of_goods}}" ><button type="button" style="font-size:20px ;">View</button></a></td>
 
-    <u><h1>Officer Dashboard</h1></u>  <br/>
+                <td>{{i.geo_area}}</td>
+                <td>{{i.proof_of_origin}}</td>
+                <td>{{i.method_of_production}}</td>
+                <td>{{i.uniqueness}}</td>
+                <td>{{i.inspection_body}}</td>
+                <td>{{i.other}}</td>
+                <td>{{i.status}}</td>
+  
+                <td>{{i.form_type}}</td>
+                <td>{{i.is_deleted}}</td>
+                <td>{{i.date_of_regestration}}</td>
+                <td><a href="giassoverify/{{i.application_number}}" style="background-color:black ;"><button>Verify</button></a></td>
 
-    <p>{{associations_applied}}</p>
-    <p>{{associations_pending}}</p>
-    <p>{{associations_approved}}</p>
-    <p>{{user_applied}}</p>
-    <p>{{user_pending}}</p>
-    <p>{{user_approved}}</p>
-
+                <td><a href="giassoapprove/{{i.application_number}}" style="background-color: green ;"><button>Approve</button></a></td>
+            </tr>
+        {% endfor %}
+      </table>
+ 
 
 
     {% include 'footer.html' %} {% block footer %}

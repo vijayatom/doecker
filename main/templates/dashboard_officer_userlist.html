@@ -15,17 +15,31 @@
     {% include 'secondary-navbar.html' %} {% block secondary-navbar %}
     {%endblock%}
 
-    <a href="/allassociations"><button type="button" class="btn btn-primary btn-lg">View All Associations</button> </a>
+    <u><h1>Officer Dashboard - All Users List</h1></u>  <br/>
+    <table class="table table-bordered " border ="1">
+        <thead>
+          <tr>
+            <th>Application Number</th>
+            <th>Applicant</th>
 
-    <u><h1>Officer Dashboard</h1></u>  <br/>
+            <th>Verify</th>
+            <th>Approve</th>
+          </tr>
+        </thead>
+        <tbody>
+        {%for i in users%}
+            <tr>
+                <td>{{i.user_id}}</td>
+                <td>{{i.user_name}}</td>
 
-    <p>{{associations_applied}}</p>
-    <p>{{associations_pending}}</p>
-    <p>{{associations_approved}}</p>
-    <p>{{user_applied}}</p>
-    <p>{{user_pending}}</p>
-    <p>{{user_approved}}</p>
+                <td><a href="giassoverify/{{i.user_id}}" style="background-color:black ;"><button>Verify</button></a></td>
 
+                <td><a href="giassoapprove/{{i.user_id}}" style="background-color: green ;"><button>Approve</button></a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+      </table>
+ 
 
 
     {% include 'footer.html' %} {% block footer %}

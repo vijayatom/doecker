@@ -169,7 +169,12 @@ def dashboard(request):
     if request.user.is_superuser:
         associations = GIAssociatationRegistrationModel.objects.all()
         context = {
-            "associations":associations
+            "associations_applied":len(associations),
+            "associations_pending": 3,
+            "associations_approved": 4,
+            "user_applied": 2,
+            "user_pending": 3,
+            "user_approved": 2
         }
         return render(request, 'dashboard_officer.html', context=context)
 
@@ -181,6 +186,22 @@ def dashboard(request):
         return render(request, 'dashboard_association.html', context=context)
     else:
         return render(request, 'dashboard_user.html', context={})
+
+def allassociations(request):
+    if request.user.is_superuser:
+        associations = GIAssociatationRegistrationModel.objects.all()
+        context = {
+            "associations":associations
+        }
+        return render(request, 'dashboard_officer_asslist.html', context=context)
+
+def allusers(request):
+    if request.user.is_superuser:
+        users = GI_User_reges.objects.all()
+        context = {
+            "users":users
+        }
+        return render(request, 'dashboard_officer_userlist.html', context=context)
 
 
 def registration(request):
