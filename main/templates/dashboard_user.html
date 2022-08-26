@@ -15,15 +15,15 @@
     {% include 'secondary-navbar.html' %} {% block secondary-navbar %}
     {%endblock%}
 
-    <u><h1>User Dashboard</h1></u> <br>
+    <u><h1>User Dashboard - Association Join Requests</h1></u> <br>
    
     <a href="GI_User_RegistrationForm"><button type="button" class="btn btn-primary btn-lg">Join a Association</button> </a>
    
 
     
 
-    {%for i in associations%}
-    {{i.name_of_applicant}}
+    {%for i in giuserregs%}
+    {{i.user_name}}
     {%endfor%}
  
 

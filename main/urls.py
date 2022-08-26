@@ -15,7 +15,7 @@ urlpatterns = [
     path("dashboard", views.dashboard, name="dashboard"),
     path("allassociations", views.allassociations, name="allassociations"),
     path("allusers", views.allusers, name="allusers"),
-
+    path("giassociationupdate/<id>", views.Gi_Associatation_Update, name="Gi_Associatation_Update"),
     path('about/', views.about),
     path('registration', views.registration),
     path('renewal', views.renewal),
