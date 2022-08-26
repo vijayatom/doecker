@@ -83,7 +83,8 @@ class GI_Association_application_status(models.Model):
 
 #user table
 class GI_User_reges(models.Model):
-    user_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     address_of_user = models.CharField(max_length=100)
     email_id = models.CharField(max_length=100)
