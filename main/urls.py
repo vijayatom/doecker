@@ -12,6 +12,9 @@ urlpatterns = [
     path("giassociationreg", views.Gi_Associatation_registration, name="Gi_Associatation_registration"),
     path("giassoapprove/<id>", views.update_gi_association, name="update_gi_association"),
     path("giassoverify/<id>", views.verify_gi_association, name="verify_gi_association"),
+    path("dashboard", views.dashboard, name="dashboard"),
+    path("allassociations", views.allassociations, name="allassociations"),
+    path("allusers", views.allusers, name="allusers"),
 
     path('about/', views.about),
     path('registration', views.registration),
@@ -22,7 +25,6 @@ urlpatterns = [
     #path("GI_Associatation_RenewalForm/", views.GI_association_renewal, name="GI_association_renewal"),
     path("GI_User_RegistrationForm", views.GI_user_registration, name="GI_user_registration"),
     path("GI_User_RenewalForm", views.GI_user_renewal, name="GI_user_renewal"),
-    path("dashboard", views.dashboard, name="dashboard"),
     path("registration", views.registration, name="registration"),
 
 ]
