@@ -21,7 +21,15 @@
           <tr>
             <th>Application Number</th>
             <th>Applicant</th>
-
+            <th>Address</th>
+            <th>Email-ID</th>
+            <th>Phone Number</th>
+            <th>Association Number</th>
+            <th>Date Of Registration</th>
+            <th>Association Approved</th>
+            <th>Association Comments</th>
+            <th>Officer Approved</th>
+            <th>Officer Comments</th>
             <th>Verify</th>
             <th>Approve</th>
           </tr>
@@ -31,7 +39,15 @@
             <tr>
                 <td>{{i.user_id}}</td>
                 <td>{{i.user_name}}</td>
-
+                <td>{{i.address_of_user}}</td>
+                <td>{{i.email_id}}</td>
+                <td>{{i.ph_num}}</td>
+                <td>{{i.Association_number}}</td>
+                <td>{{i.date_of_registration}}</td>
+                <td>{{i.is_association_approved}}</td>
+                <td>{{i.accociation_comments}}</td>
+                <td>{{i.is_officer_approved}}</td>
+                <td>{{i.officer_comments}}</td>
                 <td><a href="giassoverify/{{i.user_id}}" style="background-color:black ;"><button>Verify</button></a></td>
 
                 <td><a href="giassoapprove/{{i.user_id}}" style="background-color: green ;"><button>Approve</button></a></td>
