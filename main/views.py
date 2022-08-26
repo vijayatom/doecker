@@ -12,6 +12,7 @@ from django.views.generic.edit import CreateView
 from .forms import CustomUserCreationForm
 from django.urls import reverse_lazy
 from .functions import handle_uploaded_file  
+from django.forms.models import model_to_dict
 
 # Create your views here.
 
@@ -64,7 +65,12 @@ def Gi_Associatation_registration(request):
         return HttpResponse("<h1>Form Submitted Successfully</h1>")
     return render(request,"GI_Associatation_RegistrationForm.html",{'form':GI_Associatation_RegistionForm})
 
-
+def Gi_Associatation_Update(request, id):
+    print(id)
+    t = GIAssociatationRegistrationModel.objects.get(application_number=id)
+    print(model_to_dict(t))
+    form = GI_Associatation_RegistionForm(initial=model_to_dict(t))
+    return render(request,"GI_Associatation_RegistrationForm.html",{'form':form})
 
 # user Regesteration
 
@@ -74,6 +80,7 @@ def GI_user_registration(request):
         if form.is_valid():
             data = form.cleaned_data
             user = GI_User_reges(
+                user=request.user,
                 user_name = data['user_name'],
                 address_of_user = data['address_of_user'],
                 email_id = data['email_id'],
@@ -81,7 +88,8 @@ def GI_user_registration(request):
                 Association_number = data['Association_number'],
             )
             user.save()
-        return HttpResponse("<h1>User Registration Successful</h1>")
+        # return HttpResponse("<h1>User Registration Successful</h1>")
+        return redirect('dashboard')
     return render(request, 'GI_User_RegistrationForm.html', 
     context={'form':GI_User_RegistrationForm(request.GET)})
 
@@ -185,7 +193,11 @@ def dashboard(request):
         }
         return render(request, 'dashboard_association.html', context=context)
     else:
-        return render(request, 'dashboard_user.html', context={})
+        giuserregs = GI_User_reges.objects.filter(user=request.user)
+        context = {
+            "giuserregs": giuserregs
+        }
+        return render(request, 'dashboard_user.html', context=context)
 
 def allassociations(request):
     if request.user.is_superuser:
