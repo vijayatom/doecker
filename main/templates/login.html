@@ -90,18 +90,20 @@
 
 	<div class="d-flex justify-content-center align-items-center">
 	<div class="contact-container">
-		<form method="post">
+		<form method="post" action="">
+			{% csrf_token %}
+
 		  <div class="field" tabindex="2">
 			<label for="email">
 			  <i class="far fa-envelope"></i>Your Email
 			</label>
-			<input name="email" type="email" placeholder="email@domain.com" required>
+			<input name="username" type="text" placeholder="username" required>
 		  </div>
 		  <div class="field" tabindex="3">
 			<label for="message">
 			  <i class="far fa-edit"></i>Password
 			</label>
-			<input name="email" type="password" placeholder="password" required>
+			<input name="password" type="password" placeholder="password" required>
 			
 		  </div>
 		  <button type="submit">Login</button>

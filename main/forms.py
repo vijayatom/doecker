@@ -41,19 +41,17 @@ class GI_Associatation_RegistionForm(forms.Form):
     name_of_applicant = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name of the applicant', 'style': 'width: 300px;', 'class': 'form-control'}))'''
 
 class GI_User_RegistrationForm(forms.Form):
-    user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Name', 'style': 'width: 300px;', 'class': 'form-control'}))
-    address_of_user = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Address of the user', 'style': 'width: 300px;', 'class': 'form-control'}))
+    user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Full Name', 'style': 'width: 300px;', 'class': 'form-control'}))
+    address_of_user = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Address', 'style': 'width: 300px;', 'class': 'form-control'}))
     email_id = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Email Id', 'style': 'width: 300px;', 'class': 'form-control'}))
     ph_num = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Phone Number', 'style': 'width: 300px;', 'class': 'form-control'}))
-    Association_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Association Number', 'style': 'width: 300px;', 'class': 'form-control'}))
-    gi_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'GI Number', 'style': 'width: 300px;', 'class': 'form-control'}))
+    Association_number = forms.ModelChoiceField(queryset=GIAssociatationRegistrationModel.objects.all())
 
 
 class GI_User_RenewalForm(forms.Form):
-    user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Name', 'style': 'width: 300px;', 'class': 'form-control'}))
+    user_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Full Name', 'style': 'width: 300px;', 'class': 'form-control'}))
     user_id = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'User Id', 'style': 'width: 300px;', 'class': 'form-control'}))
     ph_num = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Phone Number', 'style': 'width: 300px;', 'class': 'form-control'}))
-
 
 
 class userlogin(forms.Form):

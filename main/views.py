@@ -79,10 +79,11 @@ def GI_user_registration(request):
                 email_id = data['email_id'],
                 ph_num = data['ph_num'],
                 Association_number = data['Association_number'],
-                gi_number = data['gi_number'],
             )
-            return HttpResponse("<h1>User Registration Successful</h1>")
-    return render(request, 'GI_User_RegistrationForm.html', context={'form':GI_User_RegistrationForm(request.GET)})
+            user.save()
+        return HttpResponse("<h1>User Registration Successful</h1>")
+    return render(request, 'GI_User_RegistrationForm.html', 
+    context={'form':GI_User_RegistrationForm(request.GET)})
 
 # user renewal
 
