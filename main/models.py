@@ -66,8 +66,7 @@ class GIAssociatationRegistrationModel(models.Model):
     def __str__(self):
         return self.name_of_applicant '''
 
-#public tables for user 
-
+#public tables for user
 class GI_Association_application_status(models.Model):
     application_id = models.AutoField(primary_key=True)
     assoc_id = models.ForeignKey(GIAssociatationRegistrationModel, on_delete=models.CASCADE)
@@ -82,7 +81,6 @@ class GI_Association_application_status(models.Model):
     class Meta:
         verbose_name_plural = "GI_Association_application_status"
 
-
 #user table
 class GI_User_reges(models.Model):
     user_id = models.AutoField(primary_key=True)
@@ -91,8 +89,12 @@ class GI_User_reges(models.Model):
     email_id = models.CharField(max_length=100)
     ph_num = models.CharField(max_length=100)
     Association_number = models.ForeignKey(GIAssociatationRegistrationModel, on_delete=models.CASCADE)
-    gi_number = models.CharField(max_length=100)
     date_of_registration = models.DateField(auto_now_add=True)
+    is_association_approved = models.BooleanField(default=False)
+    accociation_comments = models.CharField(max_length=100)
+    is_officer_approved = models.BooleanField(default=False)
+    officer_comments = models.CharField(max_length=100)
+
 
     class Meta:
         verbose_name_plural = "User Registration"
@@ -109,17 +111,16 @@ class GI_User_application_status(models.Model):
         return self.status 
     class Meta:
         verbose_name_plural = "User Application Status"
+
 class GI_User_renual(models.Model):
     application_id = models.AutoField(primary_key=True)
     user_id = models.ForeignKey(GI_User_reges, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     ph_num = models.CharField(max_length=100)
 
-
     def __str__(self):
         return self.user_name
          
-
 #django user login authentication
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)

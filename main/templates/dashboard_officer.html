@@ -22,20 +22,20 @@
             <th>Application Number</th>
             <th>Applicant</th>
             <th>Address</th>
-            <th> persons of organisation</th>
+            <th> people of organisation</th>
             <th> types of goods</th>
             <th> specification</th>
-            <th> name_of_geographical_indications</th>
-            <th>desc_of_goods</th>
-            <th>geo_area proof</th>
-            <th> proof of origin</th>
-            <th> method of production </th>
-            <th> uniqueness</th>
-            <th> inspection body</th>
-            <th> others</th>
-            <th> status</th>
-            <th> is deleted</th>
-            <th> form type</th>
+            <th> Name of geographical Indications</th>
+            <th>Desc of Goods</th>
+            <th>Geo area proof</th>
+            <th>proof of origin</th>
+            <th>method of production </th>
+            <th> Uniqueness</th>
+            <th> Inspection body</th>
+            <th> Others</th>
+            <th> Status</th>
+            <th> Is deleted</th>
+            <th> Form type</th>
             <th> Regestration Date</th>
             <th>Verify</th>
             <th>Approve</th>
@@ -50,7 +50,8 @@
                 <td>{{i.type_of_goods}}</td>
                 <td>{{i.specification}}</td>9
                 <td>{{i.name_of_geographical_indications}}</td>
-                <td>{{i.desc_of_goods}}</td>
+                <td><a href="{{i.desc_of_goods}}" ><button type="button" style="font-size:20px ;">View</button></a></td>
+
                 <td>{{i.geo_area}}</td>
                 <td>{{i.proof_of_origin}}</td>
                 <td>{{i.method_of_production}}</td>
@@ -62,9 +63,9 @@
                 <td>{{i.form_type}}</td>
                 <td>{{i.is_deleted}}</td>
                 <td>{{i.date_of_regestration}}</td>
-                <td><a href="giassoverify/{{i.application_number}}"><button>Verify</button></a></td>
+                <td><a href="giassoverify/{{i.application_number}}" style="background-color:black ;"><button>Verify</button></a></td>
 
-                <td><a href="giassoapprove/{{i.application_number}}"><button>Approve</button></a></td>
+                <td><a href="giassoapprove/{{i.application_number}}" style="background-color: green ;"><button>Approve</button></a></td>
             </tr>
         {% endfor %}
       </table>
