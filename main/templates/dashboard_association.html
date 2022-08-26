@@ -6,67 +6,81 @@
     <script
       src="https://kit.fontawesome.com/ad34c27ecf.js"
       crossorigin="anonymous"
+      
     ></script>
     <link rel="stylesheet" href="{% static 'css/main.css'%}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
   </head>
   <body class="mobile">
     <!-- ****** BODY CONTENT ******  -->
     <!-- ****** Seconary navbar ****** -->
     {% include 'secondary-navbar.html' %} {% block secondary-navbar %}
     {%endblock%}
-    <!-- ****** Corouseal Section ****** -->
-    {% include 'corouseal-main.html' %} {% block corouseal-main %}
-    {%endblock%}
-    <!-- ****** Counter Section ****** -->
-    <div class="counter-content">
-      <div>
-        <h1 class="counter-value applied" akhi="940">0</h1>
-        <p>Totally Applied</p>
-      </div>
-      <div>
-        <h1 class="counter-value approved" akhi="420">0</h1>
-        <p>Got Approved</p>
-      </div>
-      <div>
-        <h1 class="counter-value process" akhi="412">0</h1>
-        <p>In Process</p>
-      </div>
-    </div>
 
+    <u><h1>Association Dashboard</h1></u> 
+
+    <br/>
+    <a href="giassociationreg"><button type="button" class="btn btn-primary btn-lg">Large button</button></a>
     
 
-    <!-- ##### NEWS FEED SECTION ##### -->
-    {% include 'newsfeed-main.html' %} {% block newsfeed-main %}
-    {%endblock%}
+    
+    <br/>
+
+    <table class="table table-bordered " border="1">
+      <thead>
+        <tr>
+          <th>Application Number</th>
+          <th>Applicant</th>
+          <th>Address</th>
+          <th> persons of organisation</th>
+          <th> types of goods</th>
+          <th> specification</th>
+          <th> name_of_geographical_indications</th>
+          <th>desc_of_goods</th>
+          <th>geo_area proof</th>
+          <th> proof of origin</th>
+          <th> method of production </th>
+          <th> uniqueness</th>
+          <th> inspection body</th>
+          <th> others</th>
+          <th> status</th>
+          <th> is deleted</th>
+          <th> form type</th>
+          <th> Regestration Date</th>
+        </tr>
+      </thead>
+      {%for i in associations%}
+          <tr>
+            <td>{{i.application_number}}</td>
+
+              <td>{{i.name_of_applicant}}</td>
+              <td>{{i.address}}</td>
+              <td>{{i.persons_products_organization_authority}}</td>
+              <td>{{i.type_of_goods}}</td>
+              <td>{{i.specification}}</td>9
+              <td>{{i.name_of_geographical_indications}}</td>
+              <td>{{i.desc_of_goods}}</td>
+              <td>{{i.geo_area}}</td>
+              <td>{{i.proof_of_origin}}</td>
+              <td>{{i.method_of_production}}</td>
+              <td>{{i.uniqueness}}</td>
+              <td>{{i.inspection_body}}</td>
+              <td>{{i.other}}</td>
+              <td>{{i.status}}</td>
+
+              <td>{{i.form_type}}</td>
+              <td>{{i.is_deleted}}</td>
+              <td>{{i.date_of_regestration}}</td>
 
 
-    <!-- ############ Mappings Section ########## -->
-    <div class="gmap">
-      <iframe id="maps" style="height:500px;width:50%;" src="https://www.google.com/maps/d/embed?mid=1w725XdqsX7vG3OSXVFfYtr1UB-Y3Yx8&ehbc=2E312F" width="640" height="480"></iframe>
+              
+          </tr>
+      {% endfor %}
+    </table>
+  
 
-    </div>
 
-    <!-- ##### FOOTER SECTION ##### -->
-    <!-- <div class="primary-footer">
-      <p class="copyright-text">©All copyrghts are reserved to Indian Government.</p>
-    </div>
-    <hr>
-    <div class="footer">
-      <div class="left-footer">
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Register for GI</a></li>
-          <li><a href="#">Renewal of GI</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="right-footer">
-       <img style="width:200px;height:auto;" src="{% static 'assests/india emb.png'%}"></img>
-      <img style="width:30px;height:auto;margin-left:1.5rem;" src="{% static 'assests/gi tag.png'%}"></img>
-      </div>
-    </div> -->
     {% include 'footer.html' %} {% block footer %}
     {%endblock%}
 

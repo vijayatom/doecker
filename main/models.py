@@ -3,6 +3,20 @@ from optparse import Option
 from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+STATUS_CHOICES = (
+    ('applied','APPLIED'),
+    ('verified', 'VERIFIED'),
+    ('approved','APPROVED'),
+)
+
+FORM_TYPE_CHOICES= (
+    ('a', 'Single Class'),
+    ('b', 'Single Class Foreign Country'),
+    ('c', 'Multiple Class'),
+    ('d', 'Multiple Class Foreign Country'),
+)
 
 # Create your models here.
 class User(models.Model):
@@ -11,11 +25,18 @@ class User(models.Model):
 class User2(models.Model):
     name = models.CharField(max_length=10)
 
+class CustomUser(AbstractUser):
+    is_association = models.BooleanField(default=False)
+    # add additional fields in here
+
+    def __str__(self):
+        return self.username
+
 # Association table for User
     
-class Gi_Associatation_registration(models.Model):
-    
-    Appli_num = models.AutoField(primary_key=True)
+class GIAssociatationRegistrationModel(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    application_number = models.AutoField(primary_key=True)
     name_of_applicant = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     persons_products_organization_authority = models.CharField(max_length=100)
@@ -23,16 +44,17 @@ class Gi_Associatation_registration(models.Model):
     specification = models.CharField(max_length=100)
     name_of_geographical_indications = models.CharField(max_length=100)
     desc_of_goods = models.CharField(max_length=100)
-    geo_area = models.FloatField(max_length=100)
+    geo_area = models.CharField(max_length=100)
     proof_of_origin = models.CharField(max_length=100)
     method_of_production = models.CharField(max_length=100)
     uniqueness = models.CharField(max_length=100)
     inspection_body =  models.CharField(max_length=100)
     other = models.CharField(max_length=100)
-    status = models.CharField(max_length=20)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='applied')
     is_deleted = models.BooleanField(default=False)
-    form_type = models.CharField(max_length=20)
+    form_type = models.CharField(max_length=2, choices=FORM_TYPE_CHOICES, default='a')
     date_of_regestration = models.DateField(auto_now_add=True)
+    gi_tag = models.CharField(max_length=10, blank=True)
 
     def __str__(self):
         return self.name_of_applicant
@@ -48,7 +70,7 @@ class Gi_Associatation_registration(models.Model):
 
 class GI_Association_application_status(models.Model):
     application_id = models.AutoField(primary_key=True)
-    assoc_id = models.ForeignKey(Gi_Associatation_registration, on_delete=models.CASCADE)
+    assoc_id = models.ForeignKey(GIAssociatationRegistrationModel, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=100)
     ph_num = models.CharField(max_length=100)
     status = models.CharField(max_length=100)
@@ -68,7 +90,7 @@ class GI_User_reges(models.Model):
     address_of_user = models.CharField(max_length=100)
     email_id = models.CharField(max_length=100)
     ph_num = models.CharField(max_length=100)
-    Association_number = models.ForeignKey(Gi_Associatation_registration, on_delete=models.CASCADE)
+    Association_number = models.ForeignKey(GIAssociatationRegistrationModel, on_delete=models.CASCADE)
     gi_number = models.CharField(max_length=100)
     date_of_registration = models.DateField(auto_now_add=True)
 

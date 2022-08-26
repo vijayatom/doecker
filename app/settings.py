@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'main',
 ]
 
+AUTH_USER_MODEL = "main.CustomUser"  # new
+
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [

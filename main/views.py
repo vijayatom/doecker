@@ -8,6 +8,10 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from django.contrib import messages
+from django.views.generic.edit import CreateView
+from .forms import CustomUserCreationForm
+from django.urls import reverse_lazy
+from .functions import handle_uploaded_file  
 
 # Create your views here.
 
@@ -17,16 +21,29 @@ def index(request):
         "Users":Users
     }
     return render(request,"index.html",context=context)
+
+class SignUpView(CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "signup.html"
+
+class CreateMyModelView(CreateView):
+    model = GIAssociatationRegistrationModel
+    form_class = MyModelForm
+    template_name = 'test.html'
+    success_url = 'test.html'
+
 # Associatation Registration
-def Gi_Associatation_registration(request, form_type):
-    if form_type not in ['a','b','c','d']:
-        return HttpResponse("Invalid form type")
+def Gi_Associatation_registration(request):
     if request.method == 'POST':
-        form = GI_Associatation_RegistionForm(request.POST)
+        form = GI_Associatation_RegistionForm(request.POST, request.FILES)
         if form.is_valid():
+
+            file_path = handle_uploaded_file(request.FILES['file'])  
             
             data = form.cleaned_data
-            form = Gi_Associatation_registration(
+            form = GIAssociatationRegistrationModel(
+                user=request.user,
                 name_of_applicant = data['name_of_applicant'],
                 address = data['address'],
                 persons_products_organization_authority = data['persons_products_organization_authority'],
@@ -34,30 +51,20 @@ def Gi_Associatation_registration(request, form_type):
                 specification = data['specification'],
                 name_of_geographical_indications = data['name_of_geographical_indications'],
                 desc_of_goods = data['desc_of_goods'],
-                geo_area = data['geo_area'],
                 proof_of_origin = data['proof_of_origin'],
                 method_of_production = data['method_of_production'],
                 uniqueness = data['uniqueness'],
                 inspection_body = data['inspection_body'],
                 other = data['other'],
-                form_type = form_type
+                form_type = data['form_type'],
+                geo_area=file_path
                 )
             form.save()
+
         return HttpResponse("<h1>Form Submitted Successfully</h1>")
     return render(request,"GI_Associatation_RegistrationForm.html",{'form':GI_Associatation_RegistionForm})
 
-#Associatation Renewal
-'''def GI_association_renewal(request):
-    if request .method == 'POST':
-        form = GI_Associatation_RenewalForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            form = GI_Assoctiation_renewal(
-                name_of_applicant = data['name_of_applicant'],
-                )
-            form.save()
-        return HttpResponse("<h1>Form Submitted Successfully</h1>")
-    return render(request, 'GI_Associatation_RenewalForm.html', context={'form':GI_Associatation_RenewalForm(request.GET)})'''
+
 
 # user Regesteration
 
@@ -105,19 +112,27 @@ def renewal(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+def logoutPage(request):
+    print("calling")
+    if request.user.is_authenticated:
+        print("auth done")
+        logout(request)
+    return redirect('home')
+
+
 def loginPage(request):
     if request.user.is_authenticated:
         print("auth done")
-        return redirect('home')
+        return redirect('dashboard')
     else:
-        if request.method == 'POST':
+        if request.method == 'POST':    
             username = request.POST.get('username')
             password =request.POST.get('password')
             user = authenticate(request, username=username, password=password)
             
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('dashboard')
             else:
                 messages.info(request, 'Username OR password is incorrect')
         context = {}
@@ -148,31 +163,41 @@ def faq(request):
     return render(request,"login.html", context={'form':userlogin(request.GET)})
     '''
 
-def dashboard1(request):
-    # h = Gi_Associatation_registration.objects.prefetch_related('gi_association_application_status_set', 'gi_user_reges_set','gi_user_application_status').get(Appli_num='21')
-    # print(h.gi_association_application_status_set.all())
-    # print(h.gi_user_reges_set.all())
-    # print(h.gi_user_application_status.all())
-    # f = Gi_Associatation_registration.objects.all()
-    # for i in f:
-    #     print(f.name_of_applicant)   
-    h = GI_User_reges.objects.all()
-    for i in h:
-        print(i.user_name)
-    # print(h)
-    return render(request, 'dashboard1.html', context={'h':h})
+def dashboard(request):
+
+    if request.user.is_superuser:
+        associations = GIAssociatationRegistrationModel.objects.all()
+        context = {
+            "associations":associations
+        }
+        return render(request, 'dashboard_officer.html', context=context)
+
+    if request.user.is_association:
+        associations = GIAssociatationRegistrationModel.objects.filter(user=request.user)
+        context = {
+            "associations":associations
+        }
+        return render(request, 'dashboard_association.html', context=context)
+    else:
+        return render(request, 'dashboard_user.html', context={})
+
 
 def registration(request):
     return render(request,'registration.html')
 
-def assregister(request):
-    form = UserCreationForm()
+def update_gi_association(request,id):
+    print(id)
+    t = GIAssociatationRegistrationModel.objects.get(application_number=id)
+    t.status = 'approved'  # change field
+    t.gi_tag = 'gti' + str(t.application_number)
+    t.save() # this will update only
+    return redirect('dashboard')
 
-    if request.method =='POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
+def verify_gi_association(request,id):
+    print(id)
+    t = GIAssociatationRegistrationModel.objects.get(application_number=id)
+    t.status = 'verified'  # change field
+    t.save() # this will update only
+    return redirect('dashboard')
+ 
 
-    context={'form':form}
-    return render(request,'assregister.html',context)

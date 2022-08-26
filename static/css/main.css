@@ -756,3 +756,9 @@ hr {
   background-color: #fff;
   outline: none;
 }
+
+.gmap {
+  right: 110px;
+  display: flex;
+  justify-content:center;
+}
