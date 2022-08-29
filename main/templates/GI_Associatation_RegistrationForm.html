@@ -22,12 +22,12 @@
 
         <div class="container">
 
-            <form class="well form-horizontal" action="" method="post"  id="contact_form" enctype="multipart/form-data">
+      <form class="well form-horizontal" action="" method="post"  id="contact_form" enctype="multipart/form-data">
                 {% csrf_token %}
         <fieldset>
         
         <!-- Form Name -->
-        <legend>Contact Us Today!</legend>
+        <legend>Association Registration</legend>
 
         <div class="form-group">
           <label class="col-md-4 control-label" >form_type</label>
@@ -44,7 +44,7 @@
         
         <div class="form-group">
           <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon3">Name of the Applicant</span>
+            <span class="input-group-text" id="basic-addon3">Association Name</span>
             {{form.name_of_applicant}}
           </div>
         </div>
@@ -59,38 +59,20 @@
         </div>
         
         <div class="form-group">
-<<<<<<< HEAD
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Category</span>
             {{form.persons_products_organization_authority }}
-=======
-          <label class="col-md-4 control-label">Organization Authority</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-         
-          {{form.persons_products_organization_authority }}
-            </div>
->>>>>>> a2974eb8ba0ca078402377344ca9702c74ab1ff8
+
           </div>
         </div>
         
         <!-- Text input-->
         <div class="form-group">
-<<<<<<< HEAD
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Type of Goods</span>
                 
             {{form.type_of_goods}}
-=======
-          <label class="col-md-4 control-label">Types of goods</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-        
-          {{form.type_of_goods}}
-            </div>
->>>>>>> a2974eb8ba0ca078402377344ca9702c74ab1ff8
+
           </div>
         </div>
         
@@ -110,22 +92,12 @@
         
         <!-- Text input-->
         <div class="form-group">
-<<<<<<< HEAD
       
           <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon3">Name of Geographical Indications</span>
             
             {{form.name_of_geographical_indications}}
 
-=======
-          <label class="col-md-4 control-label">Name of Geographical Indication</label>  
-            <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-    
-          {{form.name_of_geographical_indications}}
-            </div>
->>>>>>> a2974eb8ba0ca078402377344ca9702c74ab1ff8
           </div>
           
         </div>
@@ -255,6 +227,7 @@
         
         </fieldset>
         </form>
+
         </div>
             </div><!-- /.container -->
 

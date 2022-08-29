@@ -41,6 +41,7 @@ def Gi_Associatation_registration(request):
         if form.is_valid():
 
             file_path = handle_uploaded_file(request.FILES['file'])  
+            print(file_path)
             
             data = form.cleaned_data
             form = GIAssociatationRegistrationModel(
@@ -62,7 +63,8 @@ def Gi_Associatation_registration(request):
                 )
             form.save()
 
-        return HttpResponse("<h1>Form Submitted Successfully</h1>")
+        # return HttpResponse("<h1>Form Submitted Successfully</h1>")
+        return redirect('dashboard')
     return render(request,"GI_Associatation_RegistrationForm.html",{'form':GI_Associatation_RegistionForm})
 
 def Gi_Associatation_Update(request, id):

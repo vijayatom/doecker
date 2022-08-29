@@ -18,13 +18,42 @@
     <u><h1>User Dashboard - Association Join Requests</h1></u> <br>
    
     <a href="GI_User_RegistrationForm"><button type="button" class="btn btn-primary btn-lg">Join a Association</button> </a>
-   
 
-    
+    <table class="table table-bordered " border ="1">
+      <thead>
+        <tr>
+          <th>Application Number</th>
+          <th>Applicant</th>
+          <th>Address</th>
+          <th>Email-ID</th>
+          <th>Phone Number</th>
+          <th>Association Number</th>
+          <th>Date Of Registration</th>
+          <th>Association Approved</th>
+          <th>Association Comments</th>
+          <th>Officer Approved</th>
+          <th>Officer Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+      {%for i in giuserregs%}
+          <tr>
+              <td>{{i.user_id}}</td>
+              <td>{{i.user_name}}</td>
+              <td>{{i.address_of_user}}</td>
+              <td>{{i.email_id}}</td>
+              <td>{{i.ph_num}}</td>
+              <td>{{i.Association_number}}</td>
+              <td>{{i.date_of_registration}}</td>
+              <td>{{i.is_association_approved}}</td>
+              <td>{{i.accociation_comments}}</td>
+              <td>{{i.is_officer_approved}}</td>
+              <td>{{i.officer_comments}}</td>
 
-    {%for i in giuserregs%}
-    {{i.user_name}}
-    {%endfor%}
+          </tr>
+      {% endfor %}
+    </tbody>
+    </table>
  
 
 
